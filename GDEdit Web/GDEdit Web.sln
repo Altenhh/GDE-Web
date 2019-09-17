@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDE.Web", "GDE.Web\GDE.Web.csproj", "{2924D04D-F109-4D97-883A-85F994A5F00D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDE.Web.Backside", "GDE.Web.Backside\GDE.Web.Backside.csproj", "{62DF707B-3DAE-4400-A00D-6DABEC924200}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{2924D04D-F109-4D97-883A-85F994A5F00D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2924D04D-F109-4D97-883A-85F994A5F00D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2924D04D-F109-4D97-883A-85F994A5F00D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62DF707B-3DAE-4400-A00D-6DABEC924200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62DF707B-3DAE-4400-A00D-6DABEC924200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62DF707B-3DAE-4400-A00D-6DABEC924200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62DF707B-3DAE-4400-A00D-6DABEC924200}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

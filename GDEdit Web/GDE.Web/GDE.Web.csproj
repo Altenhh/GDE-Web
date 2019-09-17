@@ -6,6 +6,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\GDE.Web.Backside\GDE.Web.Backside.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="GDAPI" Version="1.0.2" />
     </ItemGroup>
 
