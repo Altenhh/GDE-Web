@@ -1,21 +1,40 @@
-﻿namespace GDE.Web.Backside.Models
+﻿using System;
+
+namespace GDE.Web.Backside.Models
 {
     public class Collab
     {
-        public OverviewData OverviewView { get; set; }
-        
-        /// <summary>All the metadata for the collab</summary>
-        public class OverviewData
-        {
-            public string Title { get; set; }
+        public string Title { get; set; }
+
+        public int MaxMembers { get; set; }
             
-            //Can be multiple hosts so im going to put it into an array
-            public Creator[] Hosts { get; set; }
+        public Creator[] Hosts { get; set; }
+            
+        public Creator[] Collaborators { get; set; }
+
+        public string ShortDescription { get; set; }
+
+        public string Description { get; set; }
+
+        public float PlannedDifficulty { get; set; }
+
+        public TimeSpan PlannedLength { get; set; }
+
+        public string DiscordLink { get; set; }
+
+        public Collab(string title, string shortDesc, int maxMembers = 10)
+        {
+            Title = title;
+            ShortDescription = shortDesc;
+            MaxMembers = maxMembers;
         }
         
-        /*public IssuesData IssuesView { get; set; }
-        public PullRequestsData PullRequestsView { get; set; }
-        public NotesData NotesView { get; set; }
-        public AboutData AboutView { get; set; }*/
+        public Collab(string title, string shortDesc, Creator[] hosts, int maxMembers = 10)
+        {
+            Title = title;
+            ShortDescription = shortDesc;
+            MaxMembers = maxMembers;
+            Hosts = hosts;
+        }
     }
 }

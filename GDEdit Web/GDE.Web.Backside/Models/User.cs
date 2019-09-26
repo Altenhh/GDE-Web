@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Net;
 using GDAPI.Utilities.Objects.GeometryDash;
 using JetBrains.Annotations;
+using Newtonsoft.Json;
 using osu.Framework.MathUtils;
 
 namespace GDE.Web.Backside.Models
@@ -27,7 +30,7 @@ namespace GDE.Web.Backside.Models
         /// <summary>The rank of the <see cref="User"/>.</summary>
         public Rank UserRank { get; set; }
 
-        public struct Rank
+        public class Rank
         {
             /// <summary>Globalized rank number.</summary>
             public int Global { get; set; }
@@ -75,6 +78,14 @@ namespace GDE.Web.Backside.Models
 
         /// <summary>Geometry Dash Stats.</summary>
         public GDStats Stats { get; set; }
+        
+        // Profile links //
+
+        public string CurrentLocation { get; set; }
+
+        public string Interests { get; set; }
+
+        public string Occupation { get; set; }
 
         ///// <summary>A more dynamic approach to connecting Github to the Changelog.</summary>
         //public string GithubUrl { get; set; }
@@ -99,11 +110,66 @@ namespace GDE.Web.Backside.Models
         // Others
         /// <summary>The <see cref="User"/>'s Favorite Levels.</summary>
         public List<Level> FavoriteLevels { get; set; }
+        
+        /// <summary>Badges the <see cref="User"/> has received over the years.</summary>
+        public List<Medal> Medals { get; set; }
+        
+        public class Medal
+        {
+            /// <summary>Image URL for the <see cref="Medal"/>.</summary>
+            public string Image { get; set; }
+
+            /// <summary>Title of the <see cref="Medal"/>.</summary>
+            public string Title { get; set; }
+
+            public string ShortDescription { get; set; }
+
+            public DateTime AchievedOn { get; set; }
+
+            public MedalType Type { get; set; }
+            
+            public enum MedalType
+            {
+                Collaboration,
+                Skill,
+                Level,
+            }
+
+            public bool Equals(Medal other)
+            {
+                return Title == other.Title && ShortDescription == other.ShortDescription;
+            }
+
+            public override bool Equals(object obj)
+            {
+                return obj is Medal other && Equals(other);
+            }
+
+            public override int GetHashCode()
+            {
+                unchecked
+                {
+                    return (Title.GetHashCode() * 397) ^ ShortDescription.GetHashCode();
+                }
+            }
+
+            public static bool operator ==(Medal left, Medal right) => left.Equals(right);
+            public static bool operator !=(Medal left, Medal right) => !left.Equals(right);
+
+            public Medal(string title, string shortDescription, DateTime achievedOn, MedalType type, string image = null)
+            {
+                Image = image;
+                Title = title;
+                ShortDescription = shortDescription;
+                AchievedOn = achievedOn;
+                Type = type;
+            }
+        }
 
         /// <summary>Social Medias.</summary>
         public Socials SocialMedias { get; set; }
 
-        public struct Socials
+        public class Socials
         {
             /// <summary>Twitter Username.</summary>
             public string TwitterUsername { get; set; }
@@ -138,7 +204,7 @@ namespace GDE.Web.Backside.Models
         /// <summary>The <see cref="User"/>'s Password (salted).</summary>
         public string Password { get; set; }
 
-        public struct DatesData
+        public class DatesData
         {
             /// <summary>The date where the <see cref="User"/> was registered.</summary>
             public DateTime DateRegistered { get; set; }
@@ -146,6 +212,36 @@ namespace GDE.Web.Backside.Models
             public DateTime LastVisit { get; set; }
             /// <summary>Last post the <see cref="User"/> has posted on the Site.</summary>
             public DateTime LastPost { get; set; }
+        }
+        
+        // Constructor //
+        public User(string username, string password, string email)
+        {
+            ChangeUsername(username, username.ToLower());
+            Password = password;
+            Email = email;
+
+            // Initializers //
+            Dates = new DatesData();
+            SocialMedias = new Socials();
+            UserRank = new Rank();
+            Username = new List<string>();
+            UsernameClean = new List<string>();
+            Followers = new List<User>();
+            Stats = new GDStats();
+            Medals = new List<Medal>();
+            
+            // Properties Setter //
+            Dates.DateRegistered = DateTime.Now;
+            Dates.LastVisit = DateTime.Now;
+
+            var country = Country.Countries.Find(c => c.Acronym == RegionInfo.CurrentRegion.Name);
+            
+            //Check if the country was already made, if not, create that country
+            if (country != null)
+                Country = country;
+            else
+                Country.CreateCountry(RegionInfo.CurrentRegion);
         }
 
         // Functions //
@@ -203,6 +299,16 @@ namespace GDE.Web.Backside.Models
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[RNG.Next(s.Length)]).ToArray());
         }
+        
+        /// <summary>Gives the <see cref="User"/> a new <see cref="Medal"/>.</summary>
+        /// <param name="medal">The <see cref="Medal"/> to be given.</param>
+        public void GiveMedal(Medal medal) =>
+            Medals.Add(medal);
+
+        /// <summary>Removes a <see cref="Medal"/> from the <see cref="User"/>.</summary>
+        /// <param name="medal"><see cref="Medal"/> to be removed.</param>
+        public void RemoveMedal(Medal medal) =>
+            Medals.Remove(medal);
     }
     
     public struct GDStats
