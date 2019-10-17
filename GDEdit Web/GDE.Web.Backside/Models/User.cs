@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Net;
 using GDAPI.Utilities.Objects.GeometryDash;
 using JetBrains.Annotations;
-using Newtonsoft.Json;
 using osu.Framework.MathUtils;
 
 namespace GDE.Web.Backside.Models
