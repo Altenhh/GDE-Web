@@ -1,4 +1,4 @@
-﻿@import "colorsheet.css";
+﻿@import "../colorsheet.css";
 
 .header-wrap {
     position: sticky;

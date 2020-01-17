@@ -1,0 +1,70 @@
+﻿@using System.Diagnostics
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    @if (ViewData["SubSection"] != null && (string) ViewData["SubSection"] != "")
+    {
+        <title>@ViewData["SubSection"] · @ViewData["Title"] | @GlobalVariables.ProjectName</title>
+    }
+    else
+    {
+        <title>@ViewData["Title"] | @GlobalVariables.ProjectName</title>
+    }
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/font-awesome/css/all.css">
+    <link rel="stylesheet" href="css/Shared/header-categories.css"/>
+    <style>
+    	:root
+    	{
+    		--currentHue: @Helper.SectionToHueMap(GlobalVariables.CurrentSection);
+    	}
+    </style>
+</head>
+<body>
+@{
+    var Controls = ViewData["TabControl"]
+                   as List<TabControlObject>;
+
+    Debug.Assert(Controls != null, nameof(Controls) + " != null");
+    if (Controls.FindAll(c => c.Selected).Count > 1)
+    {
+        throw new Exception("Cannot have 2 elements selected at the same time");
+    }
+}
+
+<div style="margin-bottom: 20px; position: sticky; top: 0;">
+    <partial name="NavBar"/>
+</div>
+
+<div class="headerLayout-wrap">
+    <div class="headerLayout-content">
+        <div class="headerLayout-info">
+            <img class="headerLayout-info-img" src="">
+            <h2 class="headerLayout-info-title"><b id="lvlName">@ViewData["Title"]</b> <span>•</span> @ViewData["SubSection"]</h2>
+        </div>
+        <div class="headerLayout-categories">
+            @foreach (var control in Controls)
+            {
+                <div class="headerLayout-category-item @(control.Selected ? "headerLayout-selected" : "") @(control.Disabled ? "headerLayout-disabled" : "")">@control.String</div>
+            }
+        </div>
+    </div>
+    <div class="headerLayout-content" style="padding: 10px 15px">
+        @RenderBody()
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer_row">
+        <a class="footer_link" href="#">terms</a>
+        <a class="footer_link" href="#">privacy</a>
+        <a class="footer_link" href="#">status</a>
+        <a class="footer_link" href="https://github.com/gd-edit">organization</a>
+    </div>
+    <div class="footer_row">team zyran 2018-@DateTime.Now.Year</div>
+</footer>
+</body>
+</html>
