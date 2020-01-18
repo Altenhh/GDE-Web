@@ -39,7 +39,7 @@ namespace GDE.Web.Data
                 LinkItems.levels, 
                 new []
                 {
-                    "gdapi",
+                    "sumfolder/gdapi",
                     "listing",
                     "map packs",
                     "featured",

@@ -1,9 +1,8 @@
-﻿<link rel="stylesheet" href="css/Shared/navbar.css"/>
-<div class="header-wrap">
+﻿<div class="header-wrap">
 	<div class="header">
 		<div class="header-left">
 			<div class="header-logo" id="logo">
-				<img src="media/logo.svg" alt="Logo" draggable="false">
+				<img src="~/media/logo.svg" alt="Logo" draggable="false">
 				<h2>@GlobalVariables.ProjectName</h2>
 			</div>
 			<div class="header-items" id="HeaderItems">
@@ -24,7 +23,7 @@
 									//TODO: Remove this.
 									if (val != item.Value[0])
 									{
-										<a href="@val" class="header-item section-@item.Key.ToString()">@val</a>
+										<a href="/@val" class="header-item section-@item.Key.ToString()">@val</a>
 									}
 								}
 							</div>
@@ -33,7 +32,7 @@
 					else
 					{
 						<div class="header-category">
-							<a href="@item.Value[0]" class="category-title">@item.Key.ToString()</a>
+							<a href="/@item.Value[0]" class="category-title">@item.Key.ToString()</a>
 							<div class="category-content">
 								@foreach (var val in item.Value)
 								{
@@ -60,12 +59,12 @@
 		</div>
 		<div class="header-account">
 			<div class="account-messages">
-				<img class="messages-icon" src="media/messages.svg" draggable="false" alt="messages">
+				<img class="messages-icon" src="~/media/messages.svg" draggable="false" alt="messages">
 				<p class="messages-count">0</p>
 			</div>
 			<img class="account-icon" src="media/profiles/player-@(new Random().Next(144)).png" draggable="false" alt="Profile">
 		</div>
-		<img class="header-menu-btn" id="navbarMenuBtn" src="media/menu.svg" alt="menu" onclick="ToggleNavMenuScript()" />
+		<img class="header-menu-btn" id="navbarMenuBtn" src="~/media/menu.svg" alt="menu" onclick="ToggleNavMenuScript()" />
 	</div>
 </div>
 
