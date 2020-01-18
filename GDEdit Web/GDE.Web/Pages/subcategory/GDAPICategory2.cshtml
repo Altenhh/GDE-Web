@@ -1,0 +1,15 @@
+﻿@page
+@model GDE.Web.Pages.GDApiModel
+
+@{
+    ViewData["Title"] = "category 2";
+    Layout = "GDApi";
+    
+    ViewData["TabControl"] = new List<TabControlObject>
+    {
+        new TabControlObject("Category 1", "/subcategory/gdapicategory"),
+        new TabControlObject("Category 2", "/subcategory/gdapicategory2", true),
+    };
+}
+
+and this is from another category! crazy right?

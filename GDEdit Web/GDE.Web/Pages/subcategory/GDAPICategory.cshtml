@@ -1,0 +1,15 @@
+﻿@page
+@model GDE.Web.Pages.GDApiModel
+
+@{
+    ViewData["Title"] = "category 1";
+    Layout = "GDApi";
+    
+    ViewData["TabControl"] = new List<TabControlObject>
+    {
+        new TabControlObject("Category 1", "/subcategory/gdapicategory", true),
+        new TabControlObject("Category 2", "/subcategory/gdapicategory2"),
+    };
+}
+
+hi this is from a category!

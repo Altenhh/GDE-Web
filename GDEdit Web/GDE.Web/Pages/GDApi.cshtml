@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["SubSection"] = "gdapi";
+    Layout = "Shared/HeaderTabControl";
+}
+
+<h1>@Model.LevelTitle</h1>
+
+<h3>@Model.LevelDescription</h3>
+
+<p>@Model.LevelObjects</p>
+
+@RenderBody()

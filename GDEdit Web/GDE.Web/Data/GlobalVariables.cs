@@ -39,7 +39,7 @@ namespace GDE.Web.Data
                 LinkItems.levels, 
                 new []
                 {
-                    "sumfolder/gdapi",
+                    "subcategory/gdapicategory",
                     "listing",
                     "map packs",
                     "featured",
@@ -49,7 +49,7 @@ namespace GDE.Web.Data
                 LinkItems.rankings,
                 new []
                 {
-                    "/",
+                    "",
                     "legacy",
                     "performance",
                     "score",

@@ -8,9 +8,12 @@
 
         public bool Disabled { get; }
 
-        public TabControlObject(string String, bool selected = false, bool disabled = false)
+        public string Url { get; }
+
+        public TabControlObject(string String, string url, bool selected = false, bool disabled = false)
         {
             this.String = String;
+            Url = url;
             Selected = selected;
             Disabled = disabled;
         }

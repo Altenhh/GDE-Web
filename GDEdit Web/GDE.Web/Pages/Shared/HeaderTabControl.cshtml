@@ -17,12 +17,12 @@
     <div class="headerLayout-content">
         <div class="headerLayout-info">
             <img class="headerLayout-info-img" src="">
-            <h2 class="headerLayout-info-title"><b id="lvlName">@ViewData["Title"]</b> <span>•</span> @ViewData["SubSection"]</h2>
+            <h2 class="headerLayout-info-title"><b id="lvlName">@ViewData["SubSection"]</b> <span>•</span> @ViewData["Title"]</h2>
         </div>
         <div class="headerLayout-categories">
             @foreach (var control in Controls)
             {
-                <div class="headerLayout-category-item @(control.Selected ? "headerLayout-selected" : "") @(control.Disabled ? "headerLayout-disabled" : "")">@control.String</div>
+                <a href="@control.Url" class="headerLayout-category-item @(control.Selected ? "headerLayout-selected" : "") @(control.Disabled ? "headerLayout-disabled" : "")">@control.String</a>
             }
         </div>
     </div>
