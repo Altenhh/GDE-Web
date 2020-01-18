@@ -5,4 +5,7 @@
     <ItemGroup>
       <PackageReference Include="GDAPI" Version="1.1.8" />
     </ItemGroup>
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Resources\projects.json" />
+    </ItemGroup>
 </Project>
