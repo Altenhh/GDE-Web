@@ -2,11 +2,11 @@
 {
     public class TabControlObject
     {
-        public string String { get; set; }
+        public string String { get; }
 
-        public bool Selected { get; set; }
+        public bool Selected { get; }
 
-        public bool Disabled { get; set; }
+        public bool Disabled { get; }
 
         public TabControlObject(string String, bool selected = false, bool disabled = false)
         {
