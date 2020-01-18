@@ -168,3 +168,13 @@ a, a:active, a:hover, a:link, a:visited {
     color: #fff;
     background-color: hsl(var(--currentHue),50%,45%);
 }
+
+@media (max-width: 900px) {
+    .pl-4, .px-4 {
+        padding-left: 0 !important;
+    }
+
+    .pl-4, .px-4 {
+        padding-left: 0 !important;
+    }
+}

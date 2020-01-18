@@ -38,6 +38,10 @@
 	color: hsl(var(--currentHue), 20%, 60%);
 }
 
+.headerLayout-info-title {
+	font-size: 14px;
+}
+
 .headerLayout-categories {
 	background: var(--d4);
 	display: flex;
@@ -116,5 +120,9 @@
 	.headerLayout-wrap {
 		width: calc(100% - 40px);
 		max-width: 1000px;
+	}
+
+	.headerLayout-info-title {
+		font-size: 20px;
 	}
 }

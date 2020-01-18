@@ -4,6 +4,9 @@
 @{
     ViewData["SubSection"] = "gdapi";
     ViewData["Title"] = "levels";
+    Layout = "Shared/HeaderTabControl";
+
+    ViewData["TabControl"] = new List<TabControlObject>();
 }
 
 <h1>@Model.LevelTitle</h1>

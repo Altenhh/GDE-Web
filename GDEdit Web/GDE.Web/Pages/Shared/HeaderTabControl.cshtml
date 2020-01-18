@@ -1,30 +1,9 @@
 ﻿@using System.Diagnostics
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    @if (ViewData["SubSection"] != null && (string) ViewData["SubSection"] != "")
-    {
-        <title>@ViewData["SubSection"] · @ViewData["Title"] | @GlobalVariables.ProjectName</title>
-    }
-    else
-    {
-        <title>@ViewData["Title"] | @GlobalVariables.ProjectName</title>
-    }
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/site.css">
-    <link rel="stylesheet" href="css/font-awesome/css/all.css">
-    <link rel="stylesheet" href="css/Shared/header-categories.css"/>
-    <style>
-    	:root
-    	{
-    		--currentHue: @Helper.SectionToHueMap(GlobalVariables.CurrentSection);
-    	}
-    </style>
-</head>
-<body>
+<link rel="stylesheet" href="css/Shared/header-categories.css"/>
+
 @{
+    Layout = "_Layout";
+    
     var Controls = ViewData["TabControl"]
                    as List<TabControlObject>;
 
@@ -34,10 +13,6 @@
         throw new Exception("Cannot have 2 elements selected at the same time");
     }
 }
-
-<div style="margin-bottom: 20px; position: sticky; top: 0;">
-    <partial name="NavBar"/>
-</div>
 
 <div class="headerLayout-wrap">
     <div class="headerLayout-content">
@@ -56,15 +31,3 @@
         @RenderBody()
     </div>
 </div>
-
-<footer class="footer">
-    <div class="footer_row">
-        <a class="footer_link" href="#">terms</a>
-        <a class="footer_link" href="#">privacy</a>
-        <a class="footer_link" href="#">status</a>
-        <a class="footer_link" href="https://github.com/gd-edit">organization</a>
-    </div>
-    <div class="footer_row">team zyran 2018-@DateTime.Now.Year</div>
-</footer>
-</body>
-</html>
