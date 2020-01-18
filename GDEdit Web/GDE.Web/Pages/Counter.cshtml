@@ -4,6 +4,15 @@
 @{
     ViewData["SubSection"] = "counter";
     ViewData["Title"] = "help";
+    ViewData["ReturnPath"] = "/counter";
+
+    Layout = "Shared/HeaderBreadcrumbControl";
+    
+    ViewData["Breadcrumbs"] = new List<TabControlObject>
+    {
+        new TabControlObject("Index", ViewData["ReturnPath"].ToString()),
+        new TabControlObject("hi", ViewData["ReturnPath"].ToString()),
+    };
 }
 
 <h1>Counter</h1>

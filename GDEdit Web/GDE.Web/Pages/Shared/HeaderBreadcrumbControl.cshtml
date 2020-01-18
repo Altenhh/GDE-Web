@@ -1,0 +1,28 @@
+﻿@using System.Diagnostics
+
+@{
+    Layout = "_Layout";
+    
+    var Controls = ViewData["Breadcrumbs"]
+                   as List<TabControlObject>;
+    
+    Debug.Assert(Controls != null, nameof(Controls) + " != null");
+}
+
+<div class="headerLayout-wrap">
+    <div class="headerLayout-content">
+        <div class="headerLayout-info">
+            <img class="headerLayout-info-img" src="">
+            <h2 class="headerLayout-info-title"><b id="lvlName">@ViewData["SubSection"]</b> <span>•</span> @ViewData["Title"]</h2>
+        </div>
+        <div class="headerLayout-categories">
+            @foreach (var control in Controls)
+            {
+                <a href="@control.Url" class="category-breadcrumb-item">@control.String</a>
+            }
+        </div>
+    </div>
+    <div class="headerLayout-content" style="padding: 10px 15px">
+        @RenderBody()
+    </div>
+</div>

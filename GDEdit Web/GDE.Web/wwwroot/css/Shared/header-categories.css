@@ -116,6 +116,43 @@
 	opacity: 0;
 }
 
+.category-breadcrumb-item {
+	padding: 15px 5px;
+	cursor: pointer;
+	user-select: none;
+	color: hsl(var(--currentHue), 40%, 75%);
+
+	margin: 0;
+	flex: none;
+	display: flex;
+	align-items: baseline;
+	transition: color 0.1s ease-out;
+}
+.category-breadcrumb-item:hover {
+	color: white;
+}
+
+.category-breadcrumb-item::before {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	line-height: 1;
+	font-family: Font Awesome\ 5 Free, sans-serif;
+	font-weight: 900;
+	flex: none;
+	content: "\F105";
+	padding-right: 10px;
+	color: white;
+	cursor: default;
+}
+
+.category-breadcrumb-item:first-child::before {
+	content: '';
+}
+
 @media (min-width: 900px) {
 	.headerLayout-wrap {
 		width: calc(100% - 40px);
