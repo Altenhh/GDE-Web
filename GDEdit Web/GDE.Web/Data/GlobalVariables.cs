@@ -27,7 +27,7 @@ namespace GDE.Web.Data
                 LinkItems.home,
                 new []
                 {
-                    "/",
+                    "",
                     "news",
                     "team",
                     "changelog",
