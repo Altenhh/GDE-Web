@@ -1,13 +1,12 @@
 ﻿@page
 @using GDE.Web.Data.Projects
-@using Microsoft.AspNetCore.Html
 @model ProjectsModel
 
 @{
     Layout = "Shared/HeaderBreadcrumbControl";
     
-    ViewData["SubSection"] = "projects";
-    ViewData["Title"] = "community";
+    ViewData["SubSection"] = "community";
+    ViewData["Title"] = "projects";
     ViewData["ReturnPath"] = "/community/projects";
     
     ViewData["Breadcrumbs"] = new List<TabControlObject>

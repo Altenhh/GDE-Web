@@ -1,0 +1,21 @@
+﻿@page
+@model ProjectsModel
+
+@{
+    Layout = "Shared/HeaderBreadcrumbControl";
+
+    var project = Model.Data.Single(d => d.ID.ToString() == HttpContext.Request.Query["id"].ToString());
+    
+    ViewData["SubSection"] = "community";
+    ViewData["Title"] = "project";
+    ViewData["ReturnPath"] = "/community/projects";
+    
+    ViewData["Breadcrumbs"] = new List<TabControlObject>
+    {
+        new TabControlObject("Index", ViewData["ReturnPath"].ToString()),
+        new TabControlObject(project.Name, $"/community/project?id={project.ID}"),
+    };
+}
+
+name is: @project.Name<br>
+indexed at: @project.ID
