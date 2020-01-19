@@ -37,12 +37,15 @@
                 </div>
                 <div class="projects_card_language-message u-ellipsis-overflow">@Model.MainLanguage</div>
             </div>
-            <div class="projects_card_stats">
-                <div class="projects_card_language-icon-container">
-                    <i style="font-size: 75%" class="fas fa-star"></i>
+            @if (Model.Stars > 0)
+            {
+                <div class="projects_card_stats">
+                    <div class="projects_card_language-icon-container">
+                        <i style="font-size: 75%" class="fas fa-star"></i>
+                    </div>
+                    <div class="projects_card_language-message u-ellipsis-overflow">@Model.Stars</div>
                 </div>
-                <div class="projects_card_language-message u-ellipsis-overflow">@Model.Stars</div>
-            </div>
+            }
         </div>
     </div>
 </div>

@@ -17,5 +17,27 @@
     };
 }
 
-name is: @project.Name<br>
-indexed at: @project.ID
+<link rel="stylesheet" href="~/css/Community/ProjectView.css">
+<link rel="stylesheet" href="~/css/Community/Card.css">
+<div class="project_view-background-container">
+    <img class="project_view-background-image" src="@project.BackgroundURL"/>
+    <div class="project_view-overlay"></div>
+    <div class="project_view-background-content">
+        <div class="projects_card_logo" style="width: 80px; height: 80px">
+            <img class="projects_card_logo-image" src="@project.LogoURL">
+        </div>
+        <div class="project_view-time" title="@project.LastUpdated.ToLongDateString()">@project.LastUpdated.ToShortDateString()</div>
+        <div class="project_view-main">
+            <div class="project_view_main-title">@project.Name</div>
+            <div class="project_view_main-author">
+                @{
+                    var authors = "";
+
+                    project.Authors.ForEach(a => authors += a + " | ");
+
+                    @Html.Raw(authors.Substring(0, authors.Length - 3))
+                }
+            </div>
+        </div>
+    </div>
+</div>
