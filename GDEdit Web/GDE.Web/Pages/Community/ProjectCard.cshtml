@@ -1,0 +1,48 @@
+﻿@using GDE.Web.Data.Projects;
+@model ProjectData
+
+<div class="projects_card">
+    <a href="#" class="project_card_background-container">
+        <img class="project_card-background" src="@Model.BackgroundURL" alt="background">
+        <div class="project_card-background-overlay"></div>
+    </a>
+    <div class="projects_card-card">
+        <div class="projects_card_content projects_card_content-details">
+            <div class="projects_card_logo">
+                <img class="projects_card_logo-image" src="@Model.LogoURL">
+            </div>
+            <div class="projects_card_details">
+                <div class="projects_card_title">
+                    <div class="u-ellipsis-overflow">
+                        @Model.Name
+                    </div>
+                </div>
+                <div class="projects_card_authors">
+                    <div class="u-ellipsis-overflow">
+                        @{
+                            var authors = "";
+                            
+                            Model.Authors.ForEach(a => authors += a + " | ");
+
+                            @Html.Raw(authors.Substring(0, authors.Length - 3))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="projects_card_content projects_card_content-stats">
+            <div class="projects_card_stats">
+                <div class="projects_card_language-icon-container">
+                    <div class="projects_card_language-icon projects_card_language-icon--@Model.LanguageAcronym"></div>
+                </div>
+                <div class="projects_card_language-message u-ellipsis-overflow">@Model.MainLanguage</div>
+            </div>
+            <div class="projects_card_stats">
+                <div class="projects_card_language-icon-container">
+                    <i style="font-size: 75%" class="fas fa-star"></i>
+                </div>
+                <div class="projects_card_language-message u-ellipsis-overflow">@Model.Stars</div>
+            </div>
+        </div>
+    </div>
+</div>

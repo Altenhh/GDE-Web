@@ -1,4 +1,5 @@
 ﻿@page
+@using GDE.Web.Data.Projects
 @model ProjectsModel
 
 @{
@@ -13,3 +14,16 @@
         new TabControlObject("Index", ViewData["ReturnPath"].ToString()),
     };
 }
+
+<link rel="stylesheet" href="~/css/Community/ProjectsListing.css">
+<div class="project_page-container">
+    <link rel="stylesheet" href="~/css/Community/Card.css">
+    <div class="project_cards">
+            @{
+                TempDatabase.ProjectDatas.ForEach(async data =>
+                {
+                    await Html.RenderPartialAsync("ProjectCard", data);
+                });
+            }
+    </div>
+</div>
