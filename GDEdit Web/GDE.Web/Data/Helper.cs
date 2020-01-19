@@ -1,4 +1,5 @@
 ﻿using Markdig;
+using Markdig.SyntaxHighlighting;
 
 namespace GDE.Web.Data
 {
@@ -19,6 +20,8 @@ namespace GDE.Web.Data
         {
             var pipeline = new MarkdownPipelineBuilder()
                .UseAdvancedExtensions()
+               .UseSyntaxHighlighting()
+               .UseGridTables()
                .Build();
 
             return Markdown.ToHtml(markdown, pipeline);

@@ -66,3 +66,17 @@
     color: hsl(var(--currentHue), 40%, 60%);
     text-decoration: underline;
 }
+
+.editor-colors div {
+    background-color: var(--d6) !important;
+    color: white !important;
+}
+
+.editor-colors pre {
+    color: white !important;
+    filter: contrast(60%) brightness(160%) saturate(190%);
+}
+
+span[style="color:Blue;"] {
+    color: var(--pureHue) !important;
+}

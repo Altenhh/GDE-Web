@@ -38,6 +38,12 @@
     
                         @Html.Raw(authors.Substring(0, authors.Length - 3))
                     }
+                    <div class="projects_card_stats">
+                        <div class="projects_card_language-icon-container">
+                            <div class="projects_card_language-icon projects_card_language-icon--@project.LanguageAcronym"></div>
+                        </div>
+                        <div class="projects_card_language-message u-ellipsis-overflow">@project.MainLanguage</div>
+                    </div>
                 </div>
             </div>
         </div>
