@@ -5,6 +5,9 @@ namespace GDE.Web.Data.Projects
 {
     public class ProjectDataMini
     {
+        //TODO: guid?
+        public int ID { get; set; }
+        
         /// <summary>Name of the project.</summary>
         public string Name { get; set; }
         
