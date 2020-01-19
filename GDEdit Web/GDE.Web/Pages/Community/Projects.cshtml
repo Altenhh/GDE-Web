@@ -1,0 +1,15 @@
+﻿@page
+@model ProjectsModel
+
+@{
+    Layout = "Shared/HeaderBreadcrumbControl";
+    
+    ViewData["SubSection"] = "projects";
+    ViewData["Title"] = "community";
+    ViewData["ReturnPath"] = "/community/projects";
+    
+    ViewData["Breadcrumbs"] = new List<TabControlObject>
+    {
+        new TabControlObject("Index", ViewData["ReturnPath"].ToString()),
+    };
+}
