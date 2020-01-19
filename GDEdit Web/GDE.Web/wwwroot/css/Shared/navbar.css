@@ -133,10 +133,10 @@
     border-radius: 50px;
     margin-right: 5px;
     width: 3px;
-    height: 15px;
+    height: 50%;
     background-color: var(--userColor);
     position: absolute;
-    left: 15px;
+    left: 10px;
 }
 
 .header-item.selected::after {

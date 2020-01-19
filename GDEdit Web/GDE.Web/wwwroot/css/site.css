@@ -9,10 +9,6 @@ html, body {
     margin-top: 20px;
 }
 
-* {
-    color: white;
-}
-
 *, :before, :after {
     position: relative;
     box-sizing: border-box;

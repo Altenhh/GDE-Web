@@ -1,5 +1,6 @@
 ﻿@page
 @using GDE.Web.Data.Projects
+@using Microsoft.AspNetCore.Html
 @model ProjectsModel
 
 @{
@@ -16,14 +17,46 @@
 }
 
 <link rel="stylesheet" href="~/css/Community/ProjectsListing.css">
-<div class="project_page-container">
-    <link rel="stylesheet" href="~/css/Community/Card.css">
-    <div class="project_cards">
-            @{
-                TempDatabase.ProjectDatas.ForEach(async data =>
-                {
-                    await Html.RenderPartialAsync("ProjectCard", data);
-                });
-            }
+<link rel="stylesheet" href="~/css/Community/Card.css">
+<div class="project_page-toolbar">
+    <div class="project_page-item">
+        <div class="project_page-modes">
+            <button id="button1" class="project_page-mode" onclick="toggleView()">
+                <span class="fas fa-square"></span>
+            </button>
+            <button id="button2" class="project_page-mode" onclick="toggleView(true)">
+                <span class="fas fa-bars"></span>
+            </button>
+        </div>
     </div>
 </div>
+<div id="listing" class="project_cards">
+    @{
+        TempDatabase.ProjectDatas.ForEach(async data =>
+        {
+            await Html.RenderPartialAsync("ProjectCard", data);
+        });
+    }
+</div>
+<script>
+let listing = document.getElementById("listing");
+let button1 = document.getElementById("button1");
+let button2 = document.getElementById("button2");
+
+toggleView();
+
+function toggleView(minimized = false) {
+    if (minimized)
+    {
+        listing.classList.add("project_cards-compact");
+        button2.classList.add("project_page-mode-active");
+        button1.classList.remove("project_page-mode-active");
+    }
+    else
+    {
+        listing.classList.remove("project_cards-compact");
+        button2.classList.remove("project_page-mode-active");
+        button1.classList.add("project_page-mode-active");
+    }
+}
+</script>
