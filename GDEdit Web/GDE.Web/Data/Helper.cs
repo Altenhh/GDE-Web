@@ -1,4 +1,6 @@
-﻿namespace GDE.Web.Data
+﻿using Markdig;
+
+namespace GDE.Web.Data
 {
     public static class Helper
     {
@@ -12,5 +14,14 @@
             LinkItems.error => 333,
             _ => 255
         };
+
+        public static string ParseMarkdown(string markdown)
+        {
+            var pipeline = new MarkdownPipelineBuilder()
+               .UseAdvancedExtensions()
+               .Build();
+
+            return Markdown.ToHtml(markdown, pipeline);
+        }
     }
 }

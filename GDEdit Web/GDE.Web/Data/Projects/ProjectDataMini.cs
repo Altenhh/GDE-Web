@@ -7,6 +7,8 @@ namespace GDE.Web.Data.Projects
     {
         //TODO: guid?
         public int ID { get; set; }
+
+        public string Description { get; set; }
         
         /// <summary>Name of the project.</summary>
         public string Name { get; set; }

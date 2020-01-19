@@ -53,3 +53,16 @@
     font-size: 14px;
     font-weight: 400;
 }
+
+.project_view-container h1 {
+    border-bottom: 3px solid var(--darkHue);
+}
+
+.project_view-container a {
+    color: hsl(var(--currentHue), 40%, 70%);
+}
+
+.project_view-container a:hover {
+    color: hsl(var(--currentHue), 40%, 60%);
+    text-decoration: underline;
+}

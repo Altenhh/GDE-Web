@@ -4,6 +4,7 @@
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="GDAPI" Version="1.1.8" />
+      <PackageReference Include="Markdig" Version="0.18.0" />
     </ItemGroup>
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Resources\projects.json" />
