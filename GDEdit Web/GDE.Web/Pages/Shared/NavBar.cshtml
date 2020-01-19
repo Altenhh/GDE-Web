@@ -16,14 +16,14 @@
 					if (GlobalVariables.CurrentSection == item.Key)
 					{
 						<div class="header-category selected">
-							<a href="@item.Value[0]" class="category-title">@item.Key.ToString()</a>
+							<a href="/@item.Value[0]" class="category-title">@item.Key.ToString()</a>
 							<div class="category-content">
 								@foreach (var val in item.Value)
 								{
 									//TODO: Remove this.
 									if (val != item.Value[0])
 									{
-										<a href="/@val" class="header-item section-@item.Key.ToString()">@val</a>
+										<a href="/@item.Key.ToString()/@val" class="header-item section-@item.Key.ToString()">@val</a>
 									}
 								}
 							</div>
@@ -39,7 +39,7 @@
 									//TODO: Remove this.
 									if (val != item.Value[0])
 									{
-										<a href="@val" class="header-item section-@item.Key.ToString()">@val</a>
+										<a href="/@item.Key.ToString()/@val" class="header-item section-@item.Key.ToString()">@val</a>
 									}
 								}
 							</div>
