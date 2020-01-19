@@ -155,6 +155,19 @@
 	content: '';
 }
 
+.headerLayout-left-content {
+	padding: 10px 5px;
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+
+.headerLayout-button {
+	border-radius: 50px;
+	padding: 0 10px;
+	height: 100%;
+}
+
 @media (min-width: 900px) {
 	.headerLayout-wrap {
 		width: calc(100% - 40px);
