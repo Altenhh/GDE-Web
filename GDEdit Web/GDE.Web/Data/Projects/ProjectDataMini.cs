@@ -37,7 +37,7 @@ namespace GDE.Web.Data.Projects
 
         /// <summary>Last time the project has been updated.</summary>
         /// <returns><see cref="DateTime.Now"/></returns>
-        public DateTime LastUpdated { get; set; } = DateTime.Now;
+        //public DateTime LastUpdated { get; set; } = DateTime.Now;
 
         /// <summary>How many stars the project currently has.</summary>
         public int Stars { get; set; }

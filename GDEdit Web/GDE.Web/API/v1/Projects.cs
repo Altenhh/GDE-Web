@@ -1,23 +1,21 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using GDE.Web.Data;
 using GDE.Web.Data.Projects;
-using GDE.Web.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+using RethinkDb.Driver.Ast;
 using static GDE.Web.Data.Database.AppDatabase;
 
-namespace GDE.Web.Pages.Community
+namespace GDE.Web.API.v1
 {
-    public class ProjectsModel : PageModel
+    [Route("api/v1/[controller]"), ApiController]
+    public class Projects : ControllerBase
     {
-        public List<ProjectData> Data
+        private Table projects
         {
             get
             {
                 var table = Database.Database.Table("Projects");
 
-                return table.Map(p => new
+                table.Map(p => new
                 {
                     Authors         = p["Authors"],
                     BackgroundURL   = p["BackgroundURL"],
@@ -36,13 +34,22 @@ namespace GDE.Web.Pages.Community
                     LastUpdated     = p["LastUpdated"],
                     Site            = p["Site"],
                     Github          = p["Github"]
-                }).RunResultAsync<List<ProjectData>>(Database.Connection).Result;;
+                });
+
+                return table;
             }
         }
-        
-        public void OnGet()
+            
+        [HttpGet]
+        public IEnumerable<ProjectData> Get()
         {
-            GlobalVariables.CurrentSection = LinkItems.community;
+            return projects.RunResultAsync<List<ProjectData>>(Database.Connection).Result.ToArray();
+        }
+
+        [HttpGet("{id}")]
+        public ProjectData Get(string id)
+        {
+            return projects.Get(id).RunResultAsync<ProjectData>(Database.Connection).Result;
         }
     }
 }
