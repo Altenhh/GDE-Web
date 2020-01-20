@@ -17,12 +17,20 @@
     <link rel="stylesheet" href="~/css/font-awesome/css/all.css">
     <link rel="stylesheet" href="~/css/Shared/navbar.css"/>
     <link rel="stylesheet" href="~/css/Shared/header-categories.css"/>
+    <link rel="stylesheet" href="~/css/Tooltip.css">
     <style>
     	:root
     	{
     		--currentHue: @Helper.SectionToHueMap(GlobalVariables.CurrentSection);
     	}
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </head>
 <body>
 <div style="z-index: 1; margin-bottom: 20px; position: sticky; top: 0;">

@@ -28,7 +28,7 @@
             <div class="projects_card_logo" style="width: 80px; height: 80px">
                 <img class="projects_card_logo-image" src="@project.LogoURL">
             </div>
-            <div class="project_view-time" title="@project.LastUpdated.ToLongDateString()">@project.LastUpdated.ToShortDateString()</div>
+            <div class="project_view-time" data-toggle="tooltip" title="@project.LastUpdated.ToLongDateString()">@project.LastUpdated.ToShortDateString()</div>
             <div class="project_view-main">
                 <div class="project_view_main-title">@project.Name</div>
                 <div class="project_view_main-author">

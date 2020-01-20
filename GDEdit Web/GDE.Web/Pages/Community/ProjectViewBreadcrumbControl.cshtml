@@ -28,11 +28,11 @@
             <div class="headerLayout-left-content">
                 @if (!string.IsNullOrEmpty(project?.Github))
                 {
-                    <button onclick="window.location.href='@project.Github'" title="View on github!" class="btn-big project_view-btn-big"><i class="fab fa-github"></i></button>
+                    <button onclick="window.location.href='@project.Github'" data-toggle="tooltip" title="View on github!" class="btn-big project_view-btn-big"><i class="fab fa-github"></i></button>
                 }
                 @if (!string.IsNullOrEmpty(project?.Site))
                 {
-                    <button onclick="window.location.href='@project.Site'" title="View on the web!" class="btn-big project_view-btn-big"><i class="fas fa-globe"></i></button>
+                    <button onclick="window.location.href='@project.Site'" data-toggle="tooltip" title="View on the web!" class="btn-big project_view-btn-big"><i class="fas fa-globe"></i></button>
                 }
             </div>
         </div>
