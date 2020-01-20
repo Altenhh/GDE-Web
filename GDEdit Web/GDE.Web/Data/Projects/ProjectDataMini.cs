@@ -9,6 +9,10 @@ namespace GDE.Web.Data.Projects
         public int ID { get; set; }
 
         public string Description { get; set; }
+
+        public string Site { get; set; }
+        
+        public string Github { get; set; }
         
         /// <summary>Name of the project.</summary>
         public string Name { get; set; }

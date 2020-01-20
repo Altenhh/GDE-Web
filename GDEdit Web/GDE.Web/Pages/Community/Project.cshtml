@@ -2,13 +2,14 @@
 @model ProjectsModel
 
 @{
-    Layout = "Shared/HeaderBreadcrumbControl";
+    Layout = "ProjectViewBreadcrumbControl";
 
     var project = Model.Data.Single(d => d.ID.ToString() == HttpContext.Request.Query["id"].ToString());
     
     ViewData["SubSection"] = "community";
     ViewData["Title"] = "project";
     ViewData["ReturnPath"] = "/community/projects";
+    ViewData["Project"] = project;
     
     ViewData["Breadcrumbs"] = new List<TabControlObject>
     {

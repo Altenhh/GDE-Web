@@ -77,6 +77,13 @@
     filter: contrast(60%) brightness(160%) saturate(190%);
 }
 
+.project_view-btn-big {
+    border-radius: 50px;
+    min-width: 50px;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
 span[style="color:Blue;"] {
     color: var(--pureHue) !important;
 }
