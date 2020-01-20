@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using GDE.Web.Data;
 using GDE.Web.Data.Projects;
 using Microsoft.AspNetCore.Mvc;
@@ -14,24 +15,30 @@ namespace GDE.Web.Pages.Community
             get
             {
                 var table = Database.Database.Table("Projects");
+                List<ProjectData> result = null;
 
-                return table.Map(p => new
+                new Task(() =>
                 {
-                    Authors = p["Authors"],
-                    BackgroundURL = p["BackgroundURL"],
-                    Description = p["Description"],
-                    Discord = p["Discord"],
-                    Forks = p["Forks"],
-                    Issues = p["Issues"],
-                    LanguageAcronym = p["LanguageAcronym"],
-                    License = p["License"],
-                    LogoURL = p["LogoURL"],
-                    MainLanguage = p["MainLanguage"],
-                    Name = p["Name"],
-                    PullRequests = p["PullRequests"],
-                    Stars = p["Stars"],
-                    ID = p["id"],
-                }).RunResult<List<ProjectData>>(Database.Connection);
+                    result = table.Map(p => new
+                    {
+                        Authors         = p["Authors"],
+                        BackgroundURL   = p["BackgroundURL"],
+                        Description     = p["Description"],
+                        Discord         = p["Discord"],
+                        Forks           = p["Forks"],
+                        Issues          = p["Issues"],
+                        LanguageAcronym = p["LanguageAcronym"],
+                        License         = p["License"],
+                        LogoURL         = p["LogoURL"],
+                        MainLanguage    = p["MainLanguage"],
+                        Name            = p["Name"],
+                        PullRequests    = p["PullRequests"],
+                        Stars           = p["Stars"],
+                        ID              = p["id"],
+                    }).RunResult<List<ProjectData>>(Database.Connection);
+                }).Wait();
+
+                return result;
             }
         }
         
