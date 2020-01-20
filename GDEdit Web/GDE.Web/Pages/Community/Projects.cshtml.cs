@@ -8,7 +8,7 @@ namespace GDE.Web.Pages.Community
 {
     public class ProjectsModel : PageModel
     {
-        public List<ProjectData> Data { get; set; } = TempDatabase.ProjectDatas;
+        public List<ProjectData> Data { get; set; } = new List<ProjectData>();
         
         public void OnGet()
         {
