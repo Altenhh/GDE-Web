@@ -34,6 +34,10 @@
                 {
                     <button onclick="window.location.href='@project.Site'" data-toggle="tooltip" title="View on the web!" class="btn-big project_view-btn-big"><i class="fas fa-globe"></i></button>
                 }
+                @if (!string.IsNullOrEmpty(project?.Discord))
+                {
+                    <button onclick="window.location.href='@project.Discord'" data-toggle="tooltip" title="Join the discord server!" class="btn-big project_view-btn-big"><i class="fab fa-discord"></i></button>
+                }
             </div>
         </div>
     </div>

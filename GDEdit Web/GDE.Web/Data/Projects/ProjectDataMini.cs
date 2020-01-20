@@ -13,6 +13,8 @@ namespace GDE.Web.Data.Projects
         public string Site { get; set; }
         
         public string Github { get; set; }
+
+        public string Discord { get; set; }
         
         /// <summary>Name of the project.</summary>
         public string Name { get; set; }
