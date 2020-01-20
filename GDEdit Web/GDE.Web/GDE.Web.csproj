@@ -3,9 +3,12 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
+      <PackageReference Include="FluentAssertions" Version="5.10.0" />
       <PackageReference Include="GDAPI" Version="1.1.8" />
       <PackageReference Include="Markdig" Version="0.18.0" />
       <PackageReference Include="Markdig.SyntaxHighlighting" Version="1.1.7" />
+      <PackageReference Include="RethinkDb.Driver" Version="2.3.150" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
     </ItemGroup>
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Resources\projects.json" />

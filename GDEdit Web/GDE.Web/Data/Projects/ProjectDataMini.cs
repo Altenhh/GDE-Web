@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace GDE.Web.Data.Projects
 {
     public class ProjectDataMini
     {
-        //TODO: guid?
-        public int ID { get; set; }
+        [JsonProperty("id")]
+        public string ID { get; set; }
 
         public string Description { get; set; }
 
