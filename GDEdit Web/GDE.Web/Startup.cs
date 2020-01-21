@@ -59,21 +59,6 @@ namespace GDE.Web
                     };
                 });
 
-            /*services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-               .AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer           = true,
-                        ValidateAudience         = true,
-                        ValidateLifetime         = true,
-                        ValidateIssuerSigningKey = true,
-                        ValidIssuer              = ConfigurationManager.AppSettings["jwt_issuer"],
-                        ValidAudience            = ConfigurationManager.AppSettings["jwt_issuer"],
-                        IssuerSigningKey         = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(ConfigurationManager.AppSettings["jwt_key"]))
-                    };
-                });*/
-
             services.AddScoped<IUserService, UserService>();
         }
 
