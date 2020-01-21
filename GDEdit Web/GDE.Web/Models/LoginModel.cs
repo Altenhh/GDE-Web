@@ -2,7 +2,7 @@
 
 namespace GDE.Web.Models
 {
-    public class AuthenticationModel
+    public class LoginModel
     {
         [Required]
         public string Username { get; set; }

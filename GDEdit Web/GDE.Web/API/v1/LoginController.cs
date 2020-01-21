@@ -20,10 +20,10 @@ namespace GDE.Web.API.v1
             this.userService = userService;
         }
 
-        [AllowAnonymous, HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody] AuthenticationModel model)
+        [AllowAnonymous, HttpPost("login")]
+        public IActionResult Login([FromBody] LoginModel model)
         {
-            var user = userService.Authenticate(model.Username, model.Password);
+            var user = userService.Login(model.Username, model.Password);
 
             if (user == null)
                 return BadRequest(new { error = "username or password is incorrect" });
@@ -31,7 +31,18 @@ namespace GDE.Web.API.v1
             return Ok(user);
         }
 
-        [HttpGet]
+        [AllowAnonymous, HttpPost("register")]
+        public IActionResult Register([FromBody] LoginModel model)
+        {
+            var user = userService.Register(model.Username, model.Password, "test@email.com");
+
+            if (user == null)
+                return BadRequest(new { error = "invalid fields" });
+
+            return Ok(user);
+        }
+
+        [HttpGet("logins")]
         public IActionResult GetAll()
         {
             var jwt = Request.Headers["Authorization"][0].Split(" ")[1]; // gets rid of Bearer
