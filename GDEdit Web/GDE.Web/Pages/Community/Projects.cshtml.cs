@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using GDE.Web.Data;
 using GDE.Web.Data.Projects;
-using GDE.Web.Extensions;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using static GDE.Web.Data.Database.AppDatabase;
 

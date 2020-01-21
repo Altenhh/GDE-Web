@@ -1,12 +1,8 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
+﻿using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using GDE.Web.Models;
 using GDE.Web.Services;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace GDE.Web.API.v1
 {

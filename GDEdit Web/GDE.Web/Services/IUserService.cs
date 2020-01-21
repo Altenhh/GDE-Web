@@ -9,8 +9,6 @@ using System.Text.RegularExpressions;
 using GDE.Web.Entities;
 using GDE.Web.Extensions;
 using GDE.Web.Helpers;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using static GDE.Web.Data.Database.AppDatabase;
 
