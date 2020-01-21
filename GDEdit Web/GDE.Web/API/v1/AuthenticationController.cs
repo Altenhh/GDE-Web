@@ -11,11 +11,11 @@ using Newtonsoft.Json.Linq;
 namespace GDE.Web.API.v1
 {
     [Route("api/v1/[controller]"), ApiController, Authorize]  
-    public class LoginController : ControllerBase
+    public class AuthenticationController : ControllerBase
     {
         private IUserService userService;
 
-        public LoginController(IUserService userService)
+        public AuthenticationController(IUserService userService)
         {
             this.userService = userService;
         }

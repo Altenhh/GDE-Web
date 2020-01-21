@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using GDE.Web.Data.Projects;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RethinkDb.Driver.Ast;
 using static GDE.Web.Data.Database.AppDatabase;
 
 namespace GDE.Web.API.v1
 {
-    [Route("api/v1/[controller]"), ApiController]
+    [Route("api/v1/[controller]"), ApiController, Authorize]
     public class Projects : ControllerBase
     {
         private Table projects
