@@ -103,7 +103,7 @@ namespace GDE.Web.Services
         
         public IEnumerable<User> GetAll()
         {
-            return users.WithoutPasswords();
+            return users.WithoutPrivateInformations();
         }
     }
 }

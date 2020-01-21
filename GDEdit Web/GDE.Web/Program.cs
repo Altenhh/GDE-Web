@@ -20,8 +20,8 @@ namespace GDE.Web
 
             currentProcess.Exited += (sender, eventArgs) =>
             {
-                DatabaseProcess.Dispose();
                 Data.Dispose();
+                DatabaseProcess.Close();
             };
         }
 
