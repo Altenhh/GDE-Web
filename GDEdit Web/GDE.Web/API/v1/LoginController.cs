@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using GDE.Web.Models;
 using GDE.Web.Services;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace GDE.Web.API.v1
 {
@@ -27,7 +32,14 @@ namespace GDE.Web.API.v1
         }
 
         [HttpGet]
-        public IActionResult GetAll() =>
-            Ok(userService.GetAll());
+        public IActionResult GetAll()
+        {
+            var jwt = Request.Headers["Authorization"][0].Split(" ")[1]; // gets rid of Bearer
+            var handler = new JwtSecurityTokenHandler();
+            var token = handler.ReadJwtToken(jwt);
+            
+            //TODO: Check on the permission level here. (* = all permission, user_access = show all users, etc)
+            return Ok(userService.GetAll());
+        }
     }
 }
