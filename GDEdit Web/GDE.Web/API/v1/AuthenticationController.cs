@@ -17,7 +17,7 @@ namespace GDE.Web.API.v1
         }
 
         [AllowAnonymous, HttpPost("login")]
-        public IActionResult Login([FromBody] LoginModel model)
+        public IActionResult Login([FromBody] AuthenticationModel model)
         {
             var user = userService.Login(model.Username, model.Password);
 
@@ -28,7 +28,7 @@ namespace GDE.Web.API.v1
         }
 
         [AllowAnonymous, HttpPost("register")]
-        public IActionResult Register([FromBody] LoginModel model)
+        public IActionResult Register([FromBody] AuthenticationModel model)
         {
             var user = userService.Register(model.Username, model.Password, "test@email.com");
 
