@@ -11,6 +11,8 @@ namespace GDE.Web.Entities
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; } = "";
+        //TODO: add UserGroup.
+        public bool IsOwner { get; set; } = false;
 
         public ProfileInfo Profile { get; set; } = new ProfileInfo();
         

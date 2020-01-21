@@ -28,9 +28,9 @@ namespace GDE.Web.API.v1
         }
 
         [AllowAnonymous, HttpPost("register")]
-        public IActionResult Register([FromBody] AuthenticationModel model)
+        public IActionResult Register([FromBody] RegistrationModel model)
         {
-            var user = userService.Register(model.Username, model.Password, "test@email.com");
+            var user = userService.Register(model.Username, model.Password, model.Email);
 
             if (user == null)
                 return BadRequest(new { error = "invalid fields" });

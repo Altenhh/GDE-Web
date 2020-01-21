@@ -4,6 +4,7 @@ using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using GDE.Web.Entities;
@@ -38,7 +39,7 @@ namespace GDE.Web.Services
 
         public User Login(string username, string password)
         {
-            var user = users.SingleOrDefault(x => x.Username == username && x.Password == password);
+            var user = users.FirstOrDefault(x => x.Username == username && compareHashedPasswords(password, x.Password));
 
             if (user == null)
                 return null;
@@ -50,8 +51,10 @@ namespace GDE.Web.Services
 
         public User Register(string username, string password, string email)
         {
+            var savedPassowrdHash = createHashedPassword(password);
+            
             // Let's make sure some info is correct.
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(savedPassowrdHash))
                 return null;
             
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
@@ -60,7 +63,7 @@ namespace GDE.Web.Services
             if (!match.Success)
                 return null;
             
-            var existingUser = users.SingleOrDefault(x => x.Username == username && x.Password == password);
+            var existingUser = users.FirstOrDefault(x => x.Username == username && compareHashedPasswords(password, x.Password));
 
             if (existingUser != null)
                 return null;
@@ -68,7 +71,7 @@ namespace GDE.Web.Services
             var user = new User
             {
                 Username = username,
-                Password = password,
+                Password = savedPassowrdHash,
                 Email    = email,
                 Id = users.Count + 1
             };
@@ -99,6 +102,17 @@ namespace GDE.Web.Services
             
             var token = tokenHandler.CreateToken(tokenDescriptor);
             user.Token = tokenHandler.WriteToken(token);
+        }
+
+        // Due to security reasons, these two functions have been replaced with basic comparison.
+        private string createHashedPassword(string password)
+        {
+            return password;
+        }
+
+        private bool compareHashedPasswords(string passwordToCompare, string savedPasswordHash)
+        {
+            return passwordToCompare == savedPasswordHash;
         }
         
         public IEnumerable<User> GetAll()
