@@ -1,7 +1,10 @@
-﻿namespace GDE.Web.Entities
+﻿using Newtonsoft.Json;
+
+namespace GDE.Web.Entities
 {
     public class User
     {
+        [JsonProperty("id")]
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }

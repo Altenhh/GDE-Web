@@ -10,6 +10,7 @@ using GDE.Web.Helpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using static GDE.Web.Data.Database.AppDatabase;
 
 namespace GDE.Web.Services
 {
@@ -22,10 +23,15 @@ namespace GDE.Web.Services
     public class UserService : IUserService
     {
         // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-        private List<User> users = new List<User>
-        { 
-            new User { Id = 1, Username = "test", Password = "test" } 
-        };
+        private List<User> users
+        {
+            get
+            {
+                var table = Database.Database.Table("Accounts");
+
+                return table.RunResultAsync<List<User>>(Database.Connection).Result;
+            }
+        }
 
         private readonly string secret = ConfigurationManager.AppSettings["jwt_key"];
 
