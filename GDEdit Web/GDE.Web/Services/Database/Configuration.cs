@@ -1,7 +1,7 @@
 ﻿using RethinkDb.Driver;
 using static System.Configuration.ConfigurationManager;
 
-namespace GDE.Web.Data.Database
+namespace GDE.Web.Services.Database
 {
     public static class Configuration
     {

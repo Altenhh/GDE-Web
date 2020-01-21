@@ -1,4 +1,4 @@
-﻿namespace GDE.Web.Data
+﻿namespace GDE.Web.Entities
 {
     public class TabControlObject
     {

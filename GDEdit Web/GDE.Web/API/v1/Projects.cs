@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using GDE.Web.Data.Projects;
+using GDE.Web.Entities.Projects;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RethinkDb.Driver.Ast;
-using static GDE.Web.Data.Database.AppDatabase;
+using static GDE.Web.Services.Database.AppDatabase;
 
 namespace GDE.Web.API.v1
 {
@@ -14,7 +14,7 @@ namespace GDE.Web.API.v1
         {
             get
             {
-                var table = Database.Database.Table("Projects");
+                var table = DatabaseService.Database.Table("Projects");
 
                 table.Map(p => new
                 {
@@ -44,13 +44,13 @@ namespace GDE.Web.API.v1
         [HttpGet]
         public IEnumerable<ProjectData> Get()
         {
-            return projects.RunResultAsync<List<ProjectData>>(Database.Connection).Result.ToArray();
+            return projects.RunResultAsync<List<ProjectData>>(DatabaseService.Connection).Result.ToArray();
         }
 
         [HttpGet("{id}")]
         public ProjectData Get(string id)
         {
-            return projects.Get(id).RunResultAsync<ProjectData>(Database.Connection).Result;
+            return projects.Get(id).RunResultAsync<ProjectData>(DatabaseService.Connection).Result;
         }
     }
 }

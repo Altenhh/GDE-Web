@@ -1,4 +1,4 @@
-﻿namespace GDE.Web.Data.Projects
+﻿namespace GDE.Web.Entities.Projects
 {
     public class ProjectData : ProjectDataMini
     {

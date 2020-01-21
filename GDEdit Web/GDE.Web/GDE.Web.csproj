@@ -14,4 +14,7 @@
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Resources\projects.json" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Data\Database" />
+    </ItemGroup>
 </Project>

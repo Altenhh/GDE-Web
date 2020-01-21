@@ -1,6 +1,6 @@
 using System;
 using System.Diagnostics;
-using GDE.Web.Data.Database;
+using GDE.Web.Services.Database;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
@@ -49,7 +49,7 @@ namespace GDE.Web
             });
             
             Data = new QueryFixture();
-            AppDatabase.Database = Data;
+            AppDatabase.DatabaseService = Data;
         }
     }
 }

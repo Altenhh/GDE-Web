@@ -10,7 +10,7 @@ using GDE.Web.Entities;
 using GDE.Web.Extensions;
 using GDE.Web.Helpers;
 using Microsoft.IdentityModel.Tokens;
-using static GDE.Web.Data.Database.AppDatabase;
+using static GDE.Web.Services.Database.AppDatabase;
 
 namespace GDE.Web.Services
 {
@@ -28,9 +28,9 @@ namespace GDE.Web.Services
         {
             get
             {
-                var table = Database.Database.Table("Accounts");
+                var table = DatabaseService.Database.Table("Accounts");
 
-                return table.RunResultAsync<List<User>>(Database.Connection).Result;
+                return table.RunResultAsync<List<User>>(DatabaseService.Connection).Result;
             }
         }
 
@@ -73,8 +73,8 @@ namespace GDE.Web.Services
                 Id = users.Count + 1
             };
             
-            var table = Database.Database.Table("Accounts");
-            table.Insert(user).RunWrite(Database.Connection).Dump();
+            var table = DatabaseService.Database.Table("Accounts");
+            table.Insert(user).RunWrite(DatabaseService.Connection).Dump();
             
             createToken(user, "*");
 

@@ -3,9 +3,9 @@ using System.Configuration;
 using RethinkDb.Driver;
 using RethinkDb.Driver.Ast;
 using RethinkDb.Driver.Net;
-using static GDE.Web.Data.Database.Configuration;
+using static GDE.Web.Services.Database.Configuration;
 
-namespace GDE.Web.Data.Database
+namespace GDE.Web.Services.Database
 {
     public class QueryFixture : IDisposable
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace GDE.Web.Data.Projects
+namespace GDE.Web.Entities.Projects
 {
     public class ProjectDataMini
     {

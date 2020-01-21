@@ -1,7 +1,8 @@
-﻿using Markdig;
+﻿using GDE.Web.Data;
+using Markdig;
 using Markdig.SyntaxHighlighting;
 
-namespace GDE.Web.Data
+namespace GDE.Web.Helpers
 {
     public static class Helper
     {
