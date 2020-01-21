@@ -11,10 +11,4 @@
       <PackageReference Include="RethinkDb.Driver" Version="2.3.150" />
       <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
     </ItemGroup>
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="Resources\projects.json" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Data\Database" />
-    </ItemGroup>
 </Project>
