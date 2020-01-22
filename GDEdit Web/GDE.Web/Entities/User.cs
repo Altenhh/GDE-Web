@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Http;
+﻿using System;
+using System.Collections.Generic;
+using GDAPI.Objects.GeometryDash.General;
+using Markdig.Helpers;
 using Newtonsoft.Json;
 
 namespace GDE.Web.Entities
@@ -11,8 +13,6 @@ namespace GDE.Web.Entities
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; } = "";
-        //TODO: add UserGroup.
-        public bool IsOwner { get; set; } = false;
 
         public ProfileInfo Profile { get; set; } = new ProfileInfo();
         
@@ -33,6 +33,8 @@ namespace GDE.Web.Entities
             public string Twitch { get; set; }
 
             public string Website { get; set; }
+            
+            public string Github { get; set; }
         }
 
         public byte[] Avatar { get; set; }
@@ -69,6 +71,51 @@ namespace GDE.Web.Entities
                 public bool AutoEnable { get; set; }
             }
         }
+
+        public RankingsInfo Rankings { get; set; }
+        
+        public class RankingsInfo
+        {
+            public OrderedList<User> Global { get; set; }
+            
+            public OrderedList<User> Regional { get; set; }
+            
+            public OrderedList<User> Friends { get; set; }
+        }
+
+        public Groups Group { get; set; } = Groups.normal;
+        
+        public enum Groups
+        {
+            normal,
+            gmt,
+            admin,
+            nat,
+            dev,
+            mod,
+            lng,
+            bot,
+            loved,
+            lng_limited,
+            latb
+        }
+
+        public int SupporterLevel { get; set; }
+
+        public DatesInfo Dates { get; set; }
+        
+        public class DatesInfo
+        {
+            public DateTime DateRegistered { get; set; }
+
+            public DateTime LastVisit { get; set; }
+
+            public DateTime LastPost { get; set; }
+        }
+
+        public string Country { get; set; }
+
+        public List<Level> FavoriteLevels { get; set; }
 
         // make sure this is kept safe at all times
         public string Token { get; set; }
