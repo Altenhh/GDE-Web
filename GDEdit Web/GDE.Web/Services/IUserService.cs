@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
@@ -73,7 +73,12 @@ namespace GDE.Web.Services
                 Username = username,
                 Password = savedPassowrdHash,
                 Email    = email,
-                Id = users.Count + 1
+                Id = users.Count + 1,
+                Dates = new User.DatesInfo
+                {
+                    DateRegistered = DateTime.Now,
+                    LastVisit = DateTime.Now
+                }
             };
             
             var table = DatabaseService.Database.Table("Accounts");

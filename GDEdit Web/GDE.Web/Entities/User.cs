@@ -72,7 +72,7 @@ namespace GDE.Web.Entities
             }
         }
 
-        public RankingsInfo Rankings { get; set; }
+        public RankingsInfo Rankings { get; set; } = new RankingsInfo();
         
         public class RankingsInfo
         {
@@ -114,8 +114,6 @@ namespace GDE.Web.Entities
         }
 
         public string Country { get; set; }
-
-        public List<Level> FavoriteLevels { get; set; }
 
         // make sure this is kept safe at all times
         public string Token { get; set; }
