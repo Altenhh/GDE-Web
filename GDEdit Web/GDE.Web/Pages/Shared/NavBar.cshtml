@@ -11,6 +11,14 @@
 
 	ViewData["Account"] = user;
 	user.Avatar = File.ReadAllBytes(@"D:\czwJeZx6_400x400.jpg");
+	
+	Random r = new Random();
+	double diceRoll = r.NextDouble();
+
+	if (diceRoll * 2 >= 2)
+	{
+		user.Avatar = File.ReadAllBytes(@"D:\alexh.png");
+	}
 }
 
 <div class="header-wrap">
