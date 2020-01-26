@@ -1,0 +1,38 @@
+﻿@model GDE.Web.Models.AuthenticationModel
+
+<link rel="stylesheet" href="~/css/Shared/login.css">
+<div class="login-bg" id="login-background">
+    <div class="login-card">
+        <div class="login-card-top">
+            <form asp-controller="Login" asp-action="AuthenticateUser" method="post">
+                <h4 class="login-heading">Please sign in to proceed</h4>
+                <input type="text" class="login-input" placeholder="username or email" asp-for="Username" />
+                <input type="password" class="login-input" placeholder="password" asp-for="Password" />
+                <a href="#" class="login-reset">I've forgotten my credentials</a>
+                <button type="submit" class="btn-big" href="#" id="logButton">
+                    <span class="btn-big_content">
+                        <span class="btn-big_left">Sign in</span>
+                        <span class="btn-big_icon">
+                            <span class="fa-fw">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </span>
+                        </span>
+                    </span>
+                </button>
+            </form>
+        </div>
+        <div class="login-card-bottom">
+            <h4 class="login-heading">Don't have an account yet?</h4>
+            <button class="btn-big" >
+                <span class="btn-big_content">
+                    <span class="btn-big_left">Sign up</span>
+                    <span class="btn-big_icon">
+                        <span class="fa-fw">
+                            <i class="fas fa-user-plus"></i>
+                        </span>
+                    </span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

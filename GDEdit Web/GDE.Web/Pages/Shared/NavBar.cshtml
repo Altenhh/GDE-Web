@@ -1,23 +1,21 @@
 ﻿@using System.IO
 @using GDE.Web.Entities
 @using GDE.Web.Helpers
+@using GDE.Web.Models
 @using GDE.Web.Services.Database
 
 @{
-	//TODO: Implement login system.
-	var table = AppDatabase.DatabaseService.Database.Table("Accounts");
+	var user = ViewData["Account"] as User;
 
-	var user = table.Get(1).RunResultAsync<User>(AppDatabase.DatabaseService.Connection).Result;
-
-	ViewData["Account"] = user;
-	user.Avatar = File.ReadAllBytes(@"D:\czwJeZx6_400x400.jpg");
-	
 	Random r = new Random();
 	double diceRoll = r.NextDouble();
 
 	if (diceRoll * 2 >= 2)
 	{
-		user.Avatar = File.ReadAllBytes(@"D:\alexh.png");
+		if (user != null)
+		{
+			user.Avatar = File.ReadAllBytes(@"D:\alexh.png");
+		}
 	}
 }
 
@@ -85,7 +83,26 @@
 				<img class="messages-icon" src="~/media/messages.svg" draggable="false" alt="messages">
 				<p class="messages-count">0</p>
 			</div>
-			<img class="account-icon" src="@(user.Avatar != null ? $"data:image/png; base64, {Convert.ToBase64String(user.Avatar)}" : $"/media/profiles/player-{new Random().Next(144)}.png")" draggable="false" alt="Profile">
+			<img class="account-icon" src="@(user?.Avatar != null 
+				                                 ? $"data:image/png; base64, {Convert.ToBase64String(user?.Avatar)}" 
+				                                 : $"/media/profiles/player-{new Random().Next(144)}.png")"
+			     draggable="false" alt="Profile" onclick="toggleLogin()">
+			@if (user != null)
+			{
+				Html.Raw($"Welcome, {user.Username}");
+			}
+			@Html.Partial("Login", new AuthenticationModel())
+			<script>
+			    let loginPopup = document.getElementById("login-background").classList;
+			    
+			    function toggleLogin()
+			    {
+			        if (loginPopup.contains("login-vis"))
+			            loginPopup.remove("login-vis");
+			        else
+			            loginPopup.add("login-vis");
+			    }
+			</script>
 		</div>
 		<img class="header-menu-btn" id="navbarMenuBtn" src="~/media/menu.svg" alt="menu" onclick="ToggleNavMenuScript()" />
 	</div>
